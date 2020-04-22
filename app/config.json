@@ -1,0 +1,4 @@
+{
+    "serverPort": 3000,
+    "mongoURI": "mongodb://db:27017/orders"
+}
