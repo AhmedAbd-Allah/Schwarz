@@ -54,9 +54,27 @@ async function deleteOrder(orderId) {
     }
 }
 
+async function getOrderedItems() {
+    try {
+        let items = await orderModel.aggregate([
+            {
+                $group:
+                    { _id: "$orderedItem", "orderedTimes": { $sum: 1 } }
+            },
+            {
+                $sort: { "orderedTimes": -1 }
+            }
+        ])
+        return items;
+    } catch (error) {
+        throw error
+    }
+}
+
 module.exports = {
     getOrdersFromDataFile,
     saveOrdersInDB,
     getOrders,
-    deleteOrder
+    deleteOrder,
+    getOrderedItems
 };

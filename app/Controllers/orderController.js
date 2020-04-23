@@ -27,10 +27,20 @@ async function deleteOrder(req, res) {
     }
 }
 
+async function getOrderedItems(req, res) {
+    try {
+        let items = await orderService.getOrderedItems();
+        res.status(200).send(items)
+    } catch (error) {
+        res.send(error)
+    }
+}
+
 module.exports = {
     saveOrdersInDB,
     getOrders,
-    deleteOrder
+    deleteOrder,
+    getOrderedItems
 }
 
 
