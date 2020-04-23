@@ -2,6 +2,9 @@ const env = process.env.NODE_ENV;
 
 const devOptions = {
   watch: [
+    'Controllers',
+    'Services',
+    'Models',
     'index.js',
     'config.json'
   ],

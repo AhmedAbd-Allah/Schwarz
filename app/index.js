@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose')
 const Config = require('./config')
+const orderController = require('./Controllers/orderController');
 const dbURI = Config.mongoURI;
 
 // Start database connection
@@ -29,6 +30,7 @@ app.listen(Config.serverPort, () => {
     console.log("Server is on and listening on port ", Config.serverPort);
 });
 
+orderController.saveOrdersInDB()
 
 module.exports = app
 

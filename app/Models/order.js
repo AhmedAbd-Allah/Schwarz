@@ -15,8 +15,7 @@ const orderSchema = new Schema({
     orderedItem: {
         type: String,
     }
-},
-    { timestamps: true });
+});
 
 
 mongoose.model('Orders', orderSchema);
