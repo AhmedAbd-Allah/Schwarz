@@ -18,9 +18,19 @@ async function getOrders(req, res) {
     }
 }
 
+async function deleteOrder(req, res) {
+    try {
+        let deletedOrder = await orderService.deleteOrder(req.params.orderId);
+        res.status(200).send('Order '+ deletedOrder.orderId +' Deleted')
+    } catch (error) {
+        res.send(error)
+    }
+}
+
 module.exports = {
     saveOrdersInDB,
-    getOrders
+    getOrders,
+    deleteOrder
 }
 
 

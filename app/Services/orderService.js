@@ -45,8 +45,18 @@ async function getOrders(query) {
     }
 }
 
+async function deleteOrder(orderId) {
+    try {
+        let deletedOrder = await orderModel.findOneAndRemove({ orderId: orderId })
+        return deletedOrder;
+    } catch (error) {
+        throw error
+    }
+}
+
 module.exports = {
     getOrdersFromDataFile,
     saveOrdersInDB,
-    getOrders
+    getOrders,
+    deleteOrder
 };

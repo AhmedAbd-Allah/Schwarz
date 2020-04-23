@@ -28,6 +28,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/orders', orderController.getOrders)
+app.delete('/order/:orderId', orderController.deleteOrder)
 
 
 // server up
