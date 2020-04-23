@@ -9,8 +9,18 @@ async function saveOrdersInDB() {
     }
 }
 
+async function getOrders(req, res) {
+    try {
+        let orders = await orderService.getOrders(req.query);
+        res.status(200).send(orders)
+    } catch (error) {
+        res.send(error)
+    }
+}
+
 module.exports = {
-    saveOrdersInDB
+    saveOrdersInDB,
+    getOrders
 }
 
 

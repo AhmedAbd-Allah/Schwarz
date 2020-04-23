@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose')
+const mongoSanitize = require('express-mongo-sanitize');
 const Config = require('./config')
 const orderController = require('./Controllers/orderController');
 const dbURI = Config.mongoURI;
@@ -13,6 +14,9 @@ mongoose.connect(dbURI,
             console.log(err)
     });
 
+// sanitize request
+app.use(mongoSanitize());
+
 // allow cross origin
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -23,6 +27,7 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.get('/orders', orderController.getOrders)
 
 
 // server up

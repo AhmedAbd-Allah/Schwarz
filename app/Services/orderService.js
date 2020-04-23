@@ -36,10 +36,17 @@ async function saveOrdersInDB(dataFile) {
 }
 
 
-
-
+async function getOrders(query) {
+    try {
+        let orders = await orderModel.find(query)
+        return orders;
+    } catch (error) {
+        throw error
+    }
+}
 
 module.exports = {
     getOrdersFromDataFile,
-    saveOrdersInDB
+    saveOrdersInDB,
+    getOrders
 };
